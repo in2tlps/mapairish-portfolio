@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MAPA PORTFOLIO</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body::-webkit-scrollbar {
+      display: none;
+    }
+
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: Georgia, serif;
+      height: 100%;
+      background: linear-gradient(to right, #f7c9cf, #f3909c);
+      color: #3d2a2a;
+    }
+
+    /* ===== NAVIGATION BAR ===== */
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      background-color: rgba(243, 242, 226, 1);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      height: 70px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: bold;
+      font-size: 1.5rem;
+      color: #a0522d;
+    }
+
+    .logo img {
+      height: 40px;
+      width: 40px;
+      object-fit: contain;
+    }
+
+    .nav-links a {
+      margin-right: 50px;
+      text-decoration: none;
+      color: #3d2a2a;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #fabb9b;
+    }
+
+    .account-icon {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .icon-label {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid #a0522d;
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .user-icon {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .account-icon input {
+      display: none;
+    }
+
+    /* ===== HEADER ===== */
+    .header-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      background-color: rgba(255, 255, 255, 0.8);
+      min-height: 90vh;
+      text-align: center;
+    }
+
+    .header-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 15px;
+      margin-bottom: 20px;
+    }
+
+    .header-caption p {
+      font-size: 1rem;
+      color: #3d2a2a;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      padding: 12px 25px;
+      background-color: #d17d87;
+      color: #fff;
+      border: none;
+      border-radius: 25px;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #88555b;
+    }
+
+    /* ===== HIGHLIGHTS SECTION ===== */
+    .bestsell {
+      padding: 50px 20px;
+      text-align: center;
+      background: linear-gradient(to right, #f7e7e9, #f3d9dd);
+    }
+
+    .bestsell h2 {
+      font-size: 2.2em;
+      color: #b24a62;
+      margin-bottom: 2px;
+    }
+
+    .bestsell p {
+      font-size: 1em;
+      color: #8b3f51;
+      margin-bottom: 35px;
+    }
+
+    .bestsell-cards {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      padding: 20px 0;
+    }
+
+    .bestsell-card {
+      position: relative;
+      width: 200px;
+      height: 240px;
+      border-radius: 50% / 50%;
+      overflow: hidden;
+      background-color: #f4d9b0;
+      flex-shrink: 0;
+      border: 3px solid #fff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .bestsell-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50% / 35%;
+    }
+
+    .bestsell-cards::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .bestsell-cards::-webkit-scrollbar-thumb {
+      background-color: #f3b6ee;
+      border-radius: 4px;
+    }
+
+    .bestsell-cards::-webkit-scrollbar-track {
+      background-color: #f1e8de;
+    }
+
+    /* ===== CATEGORIES ===== */
+    .categories {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      padding: 40px;
+      background-color: rgba(245, 244, 218, 0.9);
+      text-align: center;
+    }
+
+    .categories h2 {
+      font-size: 2rem;
+    }
+
+    .categories p {
+      font-size: 1rem;
+      color: #3d2a2a;
+      margin-bottom: 20px;
+    }
+
+    .categories-cards {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .category1, .category2, .category3 {
+      position: relative;
+      width: 230px;
+      height: 300px;
+      border-radius: 15px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .category1:hover, .category2:hover, .category3:hover {
+      transform: translateY(-5px);
+    }
+
+    .category-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 15px;
+    }
+
+    /* ===== SERVICES / INTERESTS ===== */
+    .services {
+      text-align: center;
+      padding: 60px 40px;
+      background: linear-gradient(to right, #fde8ec, #f9d5dc);
+    }
+
+    .services h2 {
+      font-size: 2rem;
+      color: #b24a62;
+    }
+
+    .services .interest p {
+      font-size: 1rem;
+      color: #8b3e50;
+      margin-bottom: 60px;
+    }
+
+    .service-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      justify-items: center;
+      align-items: start;
+      margin-top: 30px;
+    }
+
+    .service-card {
+      background-color: #fff;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 25px;
+      width: 370px;
+      height: 150px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .service-card .icon {
+      background-color: #ffe6ed;
+      border-radius: 15px;
+      width: 70px;
+      height: 70px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .service-card .icon img {
+      width: 150px;
+      height: 100px;
+      object-fit: contain;
+      border-radius:  15px;
+    }
+
+    .service-card .text {
+      text-align: left;
+    }
+
+    .service-card h3 {
+      font-size: 1.1rem;
+      color: #b24a62;
+      margin: 0;
+      font-weight: 700;
+    }
+
+    .service-card p {
+      font-size: 0.9rem;
+      color: #4a3b3b;
+      margin-top: 6px;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 768px) {
+      .service-cards {
+        grid-template-columns: 1fr;
+      }
+      .nav-links a {
+        margin-right: 20px;
+        font-size: 0.9rem;
+      }
+    }
+
+    /* ===== LATEST STORIES — GRID LAYOUT FIXED ===== */
+    .latest-stories-section {
+      padding: 60px 20px;
+      background-color: #fff5e6;
+      text-align: center;
+    }
+
+    .latest-stories-section h2 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      color: #723241;
+    }
+
+    .stories-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ABOUT BOX — LEFT SIDE */
+    .about-box {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s ease;
+      width: 400px;
+      height: 505px;
+      margin-left: 200px;
+    }
+
+    .about-box:hover {
+      transform: translateY(-5px);
+    }
+
+    .about-box img {
+      width: 80%;
+      height: 70%;
+      border-radius: 10px;
+      margin: 10px 0;
+    }
+
+    .about-box h3, .about-box p {
+      margin: 10px 0;
+      color: #3d2a2a;
+    }
+
+    /* STORY CARDS — RIGHT SIDE, MATCH SERVICE CARD STYLE, SMALLER HEIGHT */
+    .sidebar-stories {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .story-card {
+      background-color: #fff;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 18px;
+      width: 60%;
+      height: 110px; /* Reduced height */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: 0.3s ease;
+      margin-right: 500px;
+    }
+
+    .story-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .story-card .icon {
+      background-color: #ffe6ed;
+      border-radius: 12px;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .story-card .icon img {
+      width: 200px;
+      height: 80px;
+      object-fit: contain;
+      border-radius:  15px;
+    }
+
+    .story-card .text {
+      text-align: left;
+      flex: 1;
+    }
+
+    .story-card-category {
+      font-size: 11px;
+      color: #888;
+      margin-bottom: 4px;
+    }
+
+    .story-card h3 {
+      font-size: 1rem;
+      color: #b24a62;
+      margin: 0;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .story-card-meta {
+      font-size: 10px;
+      color: #999;
+    }
+
+    @media (max-width: 768px) {
+      .stories-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .story-card {
+        height: auto;
+        min-height: 100px;
+      }
+    }
+
+    /* ===== SOCIAL MEDIA CONTACTS ===== */
+    .contacts {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      padding: 40px 20px;
+      background-color: rgba(255, 255, 255, 0.9);
+      text-align: center;
+    }
+
+    .contacts h2 {
+      font-size: 2rem;
+      color: #723241;
+    }
+
+    .contacts p {
+      margin-bottom: 20px;
+    }
+
+    .contacts-cards {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .contacts1, .contacts2, .contacts3 {
+      max-width: 150px;
+      transition: transform 0.3s ease;
+    }
+
+    .contacts1 img, .contacts2 img, .contacts3 img {
+      width: 100%;
+      border-radius: 15px;
+    }
+
+    .contacts1:hover, .contacts2:hover, .contacts3:hover {
+      transform: translateY(-5px);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAVIGATION -->
+  <nav class="top-nav">
+    <div class="logo">
+      <p>Irish</p>
+    </div>
+    <div class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="about.html">About Me</a>
+      <a href="interest.html">Interest</a>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-content">
+      <div class="header-image">
+        <img src="irishh.png" alt="Boutique Model">
+      </div>
+      <div class="header-caption">
+        <p>Discover the dreams and colors that paint my life.</p>
+        <a href="about.html" class="btn">Who's Irish</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HIGHLIGHTS -->
+  <section class="bestsell">
+    <h2>Highlights</h2>
+    <p>Not perfect, but still a masterpiece in progress.</p>
+    <div class="bestsell-cards">
+      <div class="bestsell-card"><img src="1.jpg" alt="Highlight 1"></div>
+      <div class="bestsell-card"><img src="4.jpg" alt="Highlight 4"></div>
+      <div class="bestsell-card"><img src="2.jpg" alt="Highlight 2"></div>
+    </div>
+  </section>
+
+  <!-- INTERESTS -->
+  <section class="services">
+    <h2>My Interest</h2>
+    <div class="interest">
+      <p>Qualities that define my growth and creativity.</p>
+    </div>
+    <div class="service-cards">
+      <div class="service-card">
+        <div class="icon">
+          <img src="lany.jpg" alt="Music">
+        </div>
+        <div class="text">
+          <h3>Listening to Music</h3>
+          <p>Listening to music has been something I can't live without. It is my comfort on tough days.</p>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="icon">
+          <img src="nails.jpg" alt="Nail Arts">
+        </div>
+        <div class="text">
+          <h3>Nail Arts</h3>
+          <p>Expressing creativity through colors and designs on my nails.</p>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="icon">
+          <img src="cal.jpg" alt="Calligraphy">
+        </div>
+        <div class="text">
+          <h3>Calligraphy</h3>
+          <p>Always eager to learn, improve, and create something meaningful.</p>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="icon">
+          <img src="travel.jpg" alt="Exploring Places">
+        </div>
+        <div class="text">
+          <h3>Exploring Places</h3>
+          <p>Delivering consistent excellence with heart and passion.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAVORITE PLACES -->
+  <section class="categories">
+    <h2>Favorite Places</h2>
+    <p>Places that hold a special place in my heart.</p>
+    <div class="categories-cards">
+      <div class="category1">
+        <a href="stilettos.html" class="category-image-wrapper">
+          <img src="caza.jpg" alt="Caza Iyang">
+        </a>
+        <h5>Caza Iyang</h5>
+      </div>
+      <div class="category2">
+        <a href="stilettos.html" class="category-image-wrapper">
+          <img src="bora.jpg" alt="Boracay">
+        </a>
+        <h5>Boracay</h5>
+      </div>
+      <div class="category3">
+        <a href="stilettos.html" class="category-image-wrapper">
+          <img src="new.jpg" alt="New Place">
+        </a>
+        <h5>New Place</h5>
+      </div>
+      <div class="category3">
+        <a href="stilettos.html" class="category-image-wrapper">
+          <img src="callee.jpg" alt="Calle">
+        </a>
+        <h5>Calle</h5>
+      </div>
+    </div>
+  </section>
+
+  <!-- LATEST STORIES — FIXED GRID -->
+  <section class="latest-stories-section">
+    <h2>Confidants</h2>
+    <div class="stories-grid">
+      <!-- LEFT: About Me -->
+      <div class="about-box">
+        <img src="aslom.jpg" alt="Irish Mae Mapa">
+        <h3>Team Aslom</h3>
+        <p>These confidants adds hues to the canvas of my life.</p>
+      </div>
+
+      <!-- RIGHT: Story Cards (4 of them) -->
+      <div class="sidebar-stories">
+        <div class="story-card">
+          <div class="icon">
+            <img src="ln.jpg" alt="Travel">
+          </div>
+          <div class="text">
+            <div class="story-card-category">Confidant</div>
+            <h3>Jerry Lance Alavaren</h3>
+            <div class="story-card-meta">Ipil, Balasan, Iloilo</div>
+          </div>
+        </div>
+
+        <div class="story-card">
+          <div class="icon">
+            <img src="gl.jpg" alt="History">
+          </div>
+          <div class="text">
+            <div class="story-card-category">Confidant</div>
+            <h3>Gleah Paciente</h3>
+            <div class="story-card-meta">Pani-an, Balasan, Iloilo</div>
+          </div>
+        </div>
+
+        <div class="story-card">
+          <div class="icon">
+            <img src="ek.jpg" alt="Budget Travel">
+          </div>
+          <div class="text">
+            <div class="story-card-category">Confidant</div>
+            <h3>Nersha Marie Beronio</h3>
+            <div class="story-card-meta">Ipil, Balasan, Iloilo</div>
+          </div>
+        </div>
+
+        <div class="story-card">
+          <div class="icon">
+            <img src="pol.jpg" alt="Food">
+          </div>
+          <div class="text">
+            <div class="story-card-category">Confidant</div>
+            <h3>Merry Christile Castro</h3>
+            <div class="story-card-meta">Salong, Batad, Iloilo</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL MEDIA CONTACTS -->
+  <section class="contacts">
+    <h2>Follow Me</h2>
+    <p>Explore my journey on social media.</p>
+    <div class="contacts-cards">
+      <div class="contacts1">
+        <a href="https://www.facebook.com/share/1GoPWbeen2/?mibextid=wwXIfr" target="_blank">
+          <img src="fb.png" alt="Facebook">
+        </a>
+        <h5>Facebook</h5>
+      </div>
+      <div class="contacts2">
+        <a href="https://www.tiktok.com/@irizziiii?_r=1&_t=ZS-91IkadX8rLd" target="_blank">
+          <img src="tt.png" alt="TikTok">
+        </a>
+        <h5>TikTok</h5>
+      </div>
+      <div class="contacts3">
+        <a href="https://www.instagram.com/in2tlps_?igsh=MXBmZmhhb2MyOTdmMg%3D%3D&utm_source=qr" target="_blank">
+          <img src="ig.png" alt="Instagram">
+        </a>
+        <h5>Instagram</h5>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
