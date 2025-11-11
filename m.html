@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Service Highlights</title>
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f3f6fb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 320px;
+  }
+
+  .card {
+    display: flex;
+    align-items: center;
+    background-color: #e6ebf5;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+  }
+
+  .icon {
+    background-color: white;
+    border-radius: 10px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+  }
+
+  .icon img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .text h3 {
+    font-size: 16px;
+    margin: 0;
+    color: #2a324b;
+    font-weight: 600;
+  }
+
+  .text p {
+    font-size: 13px;
+    color: #555;
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+</style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="card">
+      <div class="icon">
+        <img src="https://cdn-icons-png.flaticon.com/512/3176/3176366.png" alt="Map Icon">
+      </div>
+      <div class="text">
+        <h3>Local Expertise</h3>
+        <p>Our travel experts craft unique experiences with insider knowledge you won’t find in typical tours.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="icon">
+        <img src="https://cdn-icons-png.flaticon.com/512/3004/3004930.png" alt="Calendar Icon">
+      </div>
+      <div class="text">
+        <h3>All-in-One Booking</h3>
+        <p>Book everything in one place — easy, fast, and hassle-free for quick getaways or planned vacations.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="icon">
+        <img src="https://cdn-icons-png.flaticon.com/512/724/724715.png" alt="Headset Icon">
+      </div>
+      <div class="text">
+        <h3>24/7 Support</h3>
+        <p>We’re here anytime, anywhere. Get real-time help anytime — before, during, or after your trip.</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
